@@ -1,5 +1,5 @@
 .del {
-  background: coral;
+  background: #f5616d;
   color: #f2f2f2;
   border: none;
   padding: 0px 9px;
@@ -8,12 +8,14 @@
   float: right;
 }
 .todo {
-  background: #f4f4f4;
+  background: #e4d9ff;
   padding: 10px;
   border-bottom: 1px #ccc dotted;
 }
 
 .is-complete {
   text-decoration: line-through;
-  text-decoration-color: coral;
+  text-decoration-color: #e4d9ff;
+  background: #c7efcf;
+  margin-left: 1rem;
 }

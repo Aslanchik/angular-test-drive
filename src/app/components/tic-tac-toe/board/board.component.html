@@ -1,20 +1,41 @@
-<div class="game-board">
-  <div class="board">
-    <div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 mt-5">
+      <div class="msg ml-4">
+        <div *ngIf="winner !== 'tie' && (winner === 'X' || winner === 'O')">
+          <div *ngIf="winner === 'X'; else winnerO">
+            Winner : <span class="winner x">PLAYER {{ winner }}</span>
+          </div>
+          <ng-template #winnerO>
+            Winner : <span class="winner o">PLAYER {{ winner }}</span>
+          </ng-template>
+        </div>
+        <div *ngIf="winner === 'tie'">
+          <span class="tie ml-3">Its a Tie!</span>
+        </div>
+      </div>
+      <div *ngIf="gameOver === true; else clickSquare">
+        <button class="btn btn-outline-secondary col-12" (click)="startGame()">
+          Play Again!
+        </button>
+      </div>
+      <ng-template #clickSquare><p>Click any square to begin!</p></ng-template>
+    </div>
+    <div class="col-2">
       <app-square
         *ngFor="let square of squares | slice: 0:3; index as i"
         [value]="square"
         (playerClick)="clickHandler(i)"
       ></app-square>
     </div>
-    <div>
+    <div class="col-2">
       <app-square
         *ngFor="let square of squares | slice: 3:6; index as i"
         [value]="square"
         (playerClick)="clickHandler(i + 3)"
       ></app-square>
     </div>
-    <div>
+    <div class="col-2">
       <app-square
         *ngFor="let square of squares | slice: 6; index as i"
         [value]="square"
@@ -22,13 +43,4 @@
       ></app-square>
     </div>
   </div>
-  <div class="gameMsg">
-    <div *ngIf="winner !== 'tie' && (winner === 'X' || winner === 'O')">
-      winner is {{ winner }}
-    </div>
-    <div *ngIf="winner === 'tie'">Its a Tie!</div>
-  </div>
-  <button class="btn btn-outline-secondary" (click)="startGame()">
-    Start Game
-  </button>
 </div>

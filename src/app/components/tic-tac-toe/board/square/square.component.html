@@ -1,1 +1,8 @@
-<div>{{ value }}</div>
+<button class="btn" (click)="onClick()">
+  <div *ngIf="value === 'X'; else valueO">
+    <span class="x">{{ value }}</span>
+  </div>
+  <ng-template #valueO
+    ><span class="o">{{ value }}</span></ng-template
+  >
+</button>

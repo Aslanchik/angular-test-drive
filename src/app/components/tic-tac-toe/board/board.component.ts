@@ -9,25 +9,24 @@ import { Square } from 'src/app/interfaces/square';
 export class BoardComponent implements OnInit {
   squares: string[] = [];
   turn: string = 'X';
-  gameover = false;
+  gameOver = false;
   winner = null;
 
   ngOnInit(): void {
-    for (let i = 0; i < 9; i++) {
-      this.squares[i] = null;
-    }
+    this.startGame();
   }
+  //
   startGame() {
     for (let i = 0; i < 9; i++) {
       this.squares[i] = null;
     }
     this.turn = 'X';
-    this.gameover = false;
+    this.gameOver = false;
     this.winner = null;
   }
 
   clickHandler(id: number) {
-    if (!this.gameover) {
+    if (!this.gameOver) {
       if (this.squares[id] === null) {
         this.squares[id] = this.turn;
         this.changeTurn();
@@ -42,7 +41,9 @@ export class BoardComponent implements OnInit {
       this.turn = 'X';
     }
   }
+
   checkWinner() {
+    //Winning Patterns
     let winPatterns = [
       [0, 1, 2],
       [3, 4, 5],
@@ -53,23 +54,28 @@ export class BoardComponent implements OnInit {
       [0, 4, 8],
       [2, 4, 6],
     ];
+    //Check Patterns and Who caught the combination
     for (let pattern of winPatterns) {
       if (
         this.squares[pattern[0]] === this.squares[pattern[1]] &&
         this.squares[pattern[1]] === this.squares[pattern[2]] &&
         this.squares[pattern[0]] !== null
       ) {
-        this.gameover = true;
+        this.gameOver = true;
         this.winner = this.squares[pattern[0]];
         return;
       }
     }
+
     let cell = 0;
-    this.squares.forEach((e) => {
+    //Check how many squares are clicked
+    this.squares.forEach((e: string) => {
       cell += e !== null ? 1 : 0;
     });
+
+    //End game if nine squares are clicked and there is no winning pattern
     if (cell === 9) {
-      this.gameover = true;
+      this.gameOver = true;
       this.winner = 'tie';
     }
   }

@@ -1,10 +1,4 @@
-import {
-  Component,
-  Output,
-  Input,
-  HostListener,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-square',
@@ -14,12 +8,8 @@ import {
 export class SquareComponent {
   @Input() value: string;
   @Output('playerClick') click = new EventEmitter<string>();
-  @HostListener('click')
-  clickHandler() {
+
+  onClick() {
     this.click.emit('');
   }
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,0 +1,28 @@
+.msg {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #413c58;
+  font-size: 1rem;
+}
+.winner {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+.tie {
+  color: #3185fc;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.btn {
+  color: #413c58;
+  &:hover {
+    background-color: #cec3e98a;
+  }
+}
+.x {
+  color: #6ba384;
+}
+.o {
+  color: #f5616d;
+}
