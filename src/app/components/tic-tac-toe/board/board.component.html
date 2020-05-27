@@ -26,26 +26,28 @@
       <ng-template #clickSquare><p>Click any square to begin!</p></ng-template>
     </div>
     <!-- Printing out the squares -->
-    <div class="col-2">
-      <app-square
-        *ngFor="let square of squares | slice: 0:3; index as i"
-        [value]="square"
-        (playerClick)="clickHandler(i)"
-      ></app-square>
-    </div>
-    <div class="col-2">
-      <app-square
-        *ngFor="let square of squares | slice: 3:6; index as i"
-        [value]="square"
-        (playerClick)="clickHandler(i + 3)"
-      ></app-square>
-    </div>
-    <div class="col-2">
-      <app-square
-        *ngFor="let square of squares | slice: 6; index as i"
-        [value]="square"
-        (playerClick)="clickHandler(i + 6)"
-      ></app-square>
+    <div class="col-9 row">
+      <div>
+        <app-square
+          *ngFor="let square of squares | slice: 0:3; index as i"
+          [value]="square"
+          (playerClick)="clickHandler(i)"
+        ></app-square>
+      </div>
+      <div>
+        <app-square
+          *ngFor="let square of squares | slice: 3:6; index as i"
+          [value]="square"
+          (playerClick)="clickHandler(i + 3)"
+        ></app-square>
+      </div>
+      <div>
+        <app-square
+          *ngFor="let square of squares | slice: 6; index as i"
+          [value]="square"
+          (playerClick)="clickHandler(i + 6)"
+        ></app-square>
+      </div>
     </div>
   </div>
 </div>
