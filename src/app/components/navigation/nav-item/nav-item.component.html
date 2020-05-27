@@ -1,0 +1,9 @@
+<ul class="nav justify-content-around">
+  <li *ngFor="let nav of navs">
+    <button class="btn myBtn">
+      <a [routerLink]="nav.link" class="nav-link">
+        <span>{{ nav.name | titlecase }}</span>
+      </a>
+    </button>
+  </li>
+</ul>

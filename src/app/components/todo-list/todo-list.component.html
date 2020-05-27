@@ -1,0 +1,20 @@
+<div class="container-fluid overflow-auto">
+  <app-header name="todo list" icon="fas fa-tasks"></app-header>
+  <div class="col-12 mt-2">
+    <app-add-new-todo (addTodo)="addTodo($event)"></app-add-new-todo>
+  </div>
+  <div class="row">
+    <div class="col-12" *ngIf="todos.length; else noTodo">
+      <app-todo-list-item
+        *ngFor="let todo of todos"
+        [todo]="todo"
+        (deleteTodo)="deleteTodo($event)"
+      ></app-todo-list-item>
+    </div>
+    <ng-template #noTodo>
+      <div class="col-7 ml-3">
+        Good job! you have no active tasks.
+      </div>
+    </ng-template>
+  </div>
+</div>
